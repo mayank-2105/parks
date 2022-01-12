@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.gis.db import models as gismodels
 # Create your models here.
 class SkateboardParks(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
@@ -24,9 +24,14 @@ class SkateboardParks(models.Model):
     picture_li = models.CharField(max_length=80, blank=True, null=True)
     picture_de = models.CharField(max_length=80, blank=True, null=True)
     picture_1 = models.CharField(db_column='picture__1', max_length=80, blank=True, null=True)  # Field renamed because it contained more than one '_' in a row.
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    longitude = models.DecimalField(blank=True, null=True,max_digits=19, decimal_places=13)
+    latitude = models.DecimalField(blank=True, null=True,max_digits=19, decimal_places=13)
+    max_strength= models.IntegerField(blank=True, null=True)
+    no_of_gates= models.IntegerField(blank=True, null=True)
+    # wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    # wkb_geometry= gismodels.PointField(srid=4326, null=True, blank=True)
 
     class Meta:
         managed = False
-        db_table = 'skateboard_parks'
+        db_table = 'skateboard_parkdata'
 
