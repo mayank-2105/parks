@@ -9,6 +9,11 @@ from crudapi.serializers import SkateboardParksSerializer
 from django.core.files.storage import default_storage
 
 # Create your views here.
+# The main logic for our crud api's is written below
+# The different request methods for type of operations are as follows:
+# POST-> Create, GET->Read, PATCH-> Update, DELETE-> Delete
+# This function takes in a request as parameter and returns a JSON Response based on the request method
+# All the API's have been tested on Postman
 
 @csrf_exempt
 def parksApi(request,id=0):
