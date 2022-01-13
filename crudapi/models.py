@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.gis.db import models as gismodels
 # Create your models here.
+#Here we have created the models for our countries shapefile
+#Run 'python manage.py inspectdb' create the models after connecting your legacy database to django
+
 class SkateboardParks(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
     park_id = models.IntegerField(blank=True, null=True)
